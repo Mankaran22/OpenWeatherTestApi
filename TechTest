@@ -1,0 +1,86 @@
+package APITests;
+
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.*;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+
+public class OpenWeather {
+
+	@Test
+	public void London_Weather() {
+		baseURI = "https://api.openweathermap.org/data/2.5";
+		Response response=get("/weather?id=2643743&appid=9d50450a48809637b4862bdcb125927d&units=metric&lang=en");
+		 
+		 JsonPath jsonPathEvaluator = response.jsonPath();
+		 System.out.println("Temperature of London is "+jsonPathEvaluator.get("main.temp"));
+		 System.out.println("Minimum Temperature is " +jsonPathEvaluator.get("main.temp_min"));
+		 System.out.println("Maximum Temperature is "+jsonPathEvaluator.get("main.temp_max"));
+		 System.out.println("Humidity is " +jsonPathEvaluator.get("main.humidity"));
+		 System.out.println("Description: "+jsonPathEvaluator.get("weather[0].description"));
+		 
+		 System.out.println("--------------------------------------------------------");
+		 
+	}
+
+	@Test
+	public void Paris_Weather() {
+		baseURI = "https://api.openweathermap.org/data/2.5";
+		Response response = get("/weather?id=2988507&appid=9d50450a48809637b4862bdcb125927d&units=metric&lang=fr");
+		
+		JsonPath jsonPathEvaluator = response.jsonPath();
+		 System.out.println("Temperature of Paris is "+jsonPathEvaluator.get("main.temp"));
+		 System.out.println("Minimum Temperature is " +jsonPathEvaluator.get("main.temp_min"));
+		 System.out.println("Maximum Temperature is "+jsonPathEvaluator.get("main.temp_max"));
+		 System.out.println("Humidity is " +jsonPathEvaluator.get("main.humidity"));
+		 System.out.println("Description: "+jsonPathEvaluator.get("weather[0].description"));
+		
+		 System.out.println("--------------------------------------------------------");
+
+	}
+
+	@Test
+	public void NewYork_Weather() {
+		baseURI = "https://api.openweathermap.org/data/2.5";
+		Response response = get("/weather?id=5128581&appid=9d50450a48809637b4862bdcb125927d&units=metric&lang=en");
+		
+		JsonPath jsonPathEvaluator = response.jsonPath();
+		 System.out.println("Temperature of New York is "+jsonPathEvaluator.get("main.temp"));
+		 System.out.println("Minimum Temperature is " +jsonPathEvaluator.get("main.temp_min"));
+		 System.out.println("Maximum Temperature is "+jsonPathEvaluator.get("main.temp_max"));
+		 System.out.println("Humidity is " +jsonPathEvaluator.get("main.humidity"));
+		 System.out.println("Description: "+jsonPathEvaluator.get("weather[0].description"));
+		 
+		 System.out.println("--------------------------------------------------------");		 
+	}
+
+	@Test
+	public void Delhi_Weather() {
+		baseURI = "https://api.openweathermap.org/data/2.5";
+		Response response = get("/weather?id=2650225&appid=9d50450a48809637b4862bdcb125927d&units=metric&lang=hi");
+		
+		JsonPath jsonPathEvaluator = response.jsonPath();
+		 System.out.println("Temperature of Delhi is "+jsonPathEvaluator.get("main.temp"));
+		 System.out.println("Minimum Temperature is " +jsonPathEvaluator.get("main.temp_min"));
+		 System.out.println("Maximum Temperature is "+jsonPathEvaluator.get("main.temp_max"));
+		 System.out.println("Humidity is " +jsonPathEvaluator.get("main.humidity"));
+		 System.out.println("Description: "+jsonPathEvaluator.get("weather[0].description"));
+		
+		 System.out.println("--------------------------------------------------------");
+	}
+	     
+	@Test
+	public void Tokyo_Weather() {
+		baseURI = "https://api.openweathermap.org/data/2.5";
+		Response response = get("/weather?id=1850147&appid=9d50450a48809637b4862bdcb125927d&units=metric&lang=ja");
+		
+		JsonPath jsonPathEvaluator = response.jsonPath();
+		 System.out.println("Temperature of Tokyo is "+jsonPathEvaluator.get("main.temp"));
+		 System.out.println("Minimum Temperature is " +jsonPathEvaluator.get("main.temp_min"));
+		 System.out.println("Maximum Temperature is "+jsonPathEvaluator.get("main.temp_max"));
+		 System.out.println("Humidity is " +jsonPathEvaluator.get("main.humidity"));
+		 System.out.println("Description: "+jsonPathEvaluator.get("weather[0].description"));
+		
+	}
+}
